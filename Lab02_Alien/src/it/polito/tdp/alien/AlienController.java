@@ -53,13 +53,22 @@ public class AlienController {
     	
     	boolean  ok = true;
     	
+    	
+    	int pos = -1;
+    	
     	for(int i=0; i<p.length;i++) {
     		
     		char let[]  = p[i].toCharArray();
     		
     	   for(int j=0; j<let.length; j++) {
     		   
-    		   if(!(let[j]>='a' && let[j]<='z')) {
+    		  
+    		   if(let[j]=='?' && p.length==1 && pos==-1) {
+    			   pos=j;
+    			   
+    		   }
+    			   
+    		   else if(!(let[j]>='a' && let[j]<='z')) {
     			   ok = false;
     		   }
     			   
@@ -69,7 +78,8 @@ public class AlienController {
     	
     	if(!ok) {
     		this.txtResult.appendText("Errore, inserire solo " + 
-    				"le lettere alfabetiche, siano essere maiuscole o minuscole \n");
+    				"le lettere alfabetiche, siano essere maiuscole o minuscole. \n"
+    				+ "Si ricorda inoltre di inserire al massimo un '?' all'interno della parola aliena");
     	}
     	
     	else {
@@ -82,9 +92,15 @@ public class AlienController {
     			this.dizionario.addWord(p[0], p[1]);
     			    
     		}
-    		else if(p.length==1)
-    		this.txtResult.appendText(this.dizionario.translateWord(p[0])+"\n");
-    		
+    		else if(p.length==1) {
+    		if(pos!=-1) {
+    			
+    			this.txtResult.appendText(this.dizionario.parolaMisteriosa(p[0],pos)+"\n");
+    			
+    		}
+    		else
+    		   this.txtResult.appendText(this.dizionario.translateWord(p[0])+"\n");
+    		}	
     	}
     	
     }

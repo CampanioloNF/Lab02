@@ -47,5 +47,32 @@ public class AlienDictionary {
 		else
 		    return "Nessuna parola trovata";
 	}
+
+	public String parolaMisteriosa(String s, int pos) {
+	    
+		List <WordEnhanced> mistery = new ArrayList <WordEnhanced>();
+		
+		String presa = s.substring(0, pos) + s.substring(pos+1);	
+		
+		for(WordEnhanced w : this.dictionary) {
+			
+			String alien = w.getAlienWord();
+			
+			String cercata = alien.substring(0, pos) + alien.substring(pos+1);
+			
+			if(presa.equals(cercata))
+				mistery.add(w);
+			
+			
+		}
+		
+		String ris="";
+		
+	    for(WordEnhanced w : mistery) {
+	    	ris+=this.translateWord(w.getAlienWord());
+	    }
+		
+		return ris;
+	}
 	
 }
