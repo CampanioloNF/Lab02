@@ -6,41 +6,41 @@ import java.util.List;
 public class AlienDictionary {
 
 	
-	private List <Word> dictionary;
+	private List <WordEnhanced> dictionary;
 	
 	public AlienDictionary() {
 		
-		this.dictionary = new ArrayList<Word>();
+		this.dictionary = new ArrayList<WordEnhanced>();
 		
 	}
 	
 	public void addWord(String alienWord , String translation ) {
 		
-		Word nuova = new Word (alienWord, null);
+		WordEnhanced nuova = new WordEnhanced (alienWord, null);
 		
 		if(this.dictionary.contains(nuova)) {
 			
 			int pos = this.dictionary.indexOf(nuova);
-			Word w = this.dictionary.get(pos);
-			w.setTranslation(translation);
+			WordEnhanced w = this.dictionary.get(pos);
+			w.addTranslation(translation);
 			
 		}
 		
 		else
-			this.dictionary.add(new Word(alienWord, translation));
+			this.dictionary.add(new WordEnhanced(alienWord, translation));
 			
 		
 	}
 	
 	public String translateWord(String alienWord ) {
 		
-		Word nuova = new Word (alienWord, null);
+		WordEnhanced nuova = new WordEnhanced (alienWord, null);
 		
         if(this.dictionary.contains(nuova)) {
 			
 			int pos = this.dictionary.indexOf(nuova);
-			Word w = this.dictionary.get(pos);
-			return w.getTranslation();
+			WordEnhanced w = this.dictionary.get(pos);
+			return w.toString();
 			
 		}
 		
