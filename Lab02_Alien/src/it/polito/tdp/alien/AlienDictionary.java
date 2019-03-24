@@ -63,7 +63,6 @@ public class AlienDictionary {
 			if(presa.equals(cercata))
 				mistery.add(w);
 			
-			
 		}
 		
 		String ris="";
