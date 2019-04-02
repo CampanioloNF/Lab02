@@ -9,6 +9,7 @@ package it.polito.tdp.alien;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import it.polito.tdp.alien.model.AlienDictionary;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -17,6 +18,7 @@ import javafx.scene.control.TextField;
 
 public class AlienController {
 	
+	private AlienDictionary model;
     @FXML
     private ResourceBundle resources;
     @FXML
@@ -30,7 +32,7 @@ public class AlienController {
     @FXML
     private Button btnReset;
         
-    private AlienDictionary dizionario;
+    
     
     
     @FXML // This method is called by the FXMLLoader when initialization is complete
@@ -40,7 +42,7 @@ public class AlienController {
     	assert btnTranslate != null : "fx:id=\"bntTranslate\" was not injected: check your FXML file 'Alien.fxml'.";
     	assert btnReset != null : "fx:id=\"btnReset\" was not injected: check your FXML file 'Alien.fxml'.";
     	
-    	dizionario = new AlienDictionary();
+    	model = new AlienDictionary();
     }
   
     
@@ -89,17 +91,17 @@ public class AlienController {
         				"la parola ricercata o la coppia <parolaAliene> <traduzione> \n");
     		
     		else if(p.length==2) {
-    			this.dizionario.addWord(p[0], p[1]);
+    			this.model.addWord(p[0], p[1]);
     			    
     		}
     		else if(p.length==1) {
     		if(pos!=-1) {
     			
-    			this.txtResult.appendText(this.dizionario.parolaMisteriosa(p[0],pos)+"\n");
+    			this.txtResult.appendText(this.model.parolaMisteriosa(p[0],pos)+"\n");
     			
     		}
     		else
-    		   this.txtResult.appendText(this.dizionario.translateWord(p[0])+"\n");
+    		   this.txtResult.appendText(this.model.translateWord(p[0])+"\n");
     		}	
     	}
     	
@@ -112,5 +114,11 @@ public class AlienController {
     	this.txtResult.clear();
     	
     }
+
+
+	public void setModel(AlienDictionary model) {
+		this.model=model;
+		
+	}
     
 }

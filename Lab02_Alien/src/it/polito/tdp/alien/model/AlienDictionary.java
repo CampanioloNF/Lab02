@@ -1,7 +1,9 @@
-package it.polito.tdp.alien;
+package it.polito.tdp.alien.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import it.polito.tdp.alien.WordEnhanced;
 
 public class AlienDictionary {
 
